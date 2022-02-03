@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{app.user.prenom}}{% endblock %}
+
+{% block content %}
+
+    <h1>Mon compte </h1>
+    
+    {% if is_granted('ROLE_ADMIN') %}
+		<small>
+			<a href="/admin" id="admin-link">En tant qu'Administrateur, vous pouvez accéder au BackOffice.</a>
+		</small><br/>
+	{% endif %}
+
+    Bonjour {{app.user.prenom}}  <br>
+    C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+	<hr>
+	<div class="row justify-content-center">
+		<div class="col-md-4">
+			<div class="account-item text-center">
+				<img src="{{ asset('assets/images/padlock-b.png') }}" weight="50" height="50" alt="Modifier mon mot de passe"><br/>
+				<a href="{{path('password')}}">Modifier mon mot de passe</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="account-item text-center">
+				<img src="{{ asset('assets/images/user-b.png') }}" weight="50" height="50"  alt="Gérer mes adresses"><br/>
+				<a href="{{path('edit_compte')}} ">Mettre à jour mon compte</a>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+    {% if command|length > 0 %}
+         <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Montant total </th>
+            <th scope="col">Status de la commande</th>
+            <th scope="col">Date</th>
+            <th scope="col">Adresse de livraison</th>
+            </tr>
+        </thead>
+            {% for commande in command %}
+                <tbody>
+                    <tr>
+                    <td> </td>
+                    <td>{{commande.total / 100}} </td>
+                    <td>{{commande.etat}} </td>
+                    <td>{{commande.date.format('d/m/Y')}}</td>
+                    <td>{{commande.adresse}} </td>
+                    </tr>
+                </tbody>
+        {% endfor %}
+        </table>
+    {% else %}
+    <span class='text-center'> Vous n'avez pas encore passer de commande </span>
+
+    {% endif %}
+
+{% endblock %}

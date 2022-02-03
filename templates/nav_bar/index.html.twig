@@ -1,0 +1,51 @@
+   <div class="m-2">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a href="{{path('home')}}" class="navbar-brand">
+                    <img src="{{asset('assets/images/logo.png')}}" alt="Logo MaBDthéque" width="167" height="50">
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="col">
+                      {# {{ form_start(form_nav, {attr: {class: 'col'}}) }}
+                      {{ form_row(form_nav.string, {attr: {class: 'form-control me-2'}}) }}
+                      {{ form_end(form_nav) }} #}      
+
+
+                         {{ form(form_nav) }}         
+                    </div>  
+                    <div class="navbar-nav ms-auto">
+
+                        <div class="navbar-item-custom">
+
+
+                            <div class="btn"><a href="{{path('produit')}}" class="nav-item nav-link">Catalogue</a></div> |
+                                {% if app.user %}
+							<div class="btn"><a href="{{path('mon_compte')}}" class="nav-item nav-link">Mon compte
+								<small>({{app.user.prenom}})</small>
+							</a></div>
+							|
+							<div class="btn"><a href="{{path('app_logout')}}" class="nav-item nav-link">Déconnexion</a></div>
+						{% else %}
+							<div class="btn"><a href="{{path('app_login')}}" class="nav-item nav-link">Connexion</a></div>
+							|
+							<div class="btn"><a href="{{path('inscription')}}" class="nav-item nav-link">Inscription</a></div>
+						{% endif %}
+					</div>
+					<a href="{{path('cart')}}">
+						<img class="cart-icon" src="{{ asset('assets/images/bag.png')}}" alt="Voir mon panier">
+            {% if ( PanierItem()|length)>0 %}
+            <span class="position-absolute start-10 translate-middle badge rounded-pill bg-danger">
+              {{ PanierItem()|length }}</span>    
+            <span class="visually-hidden">Panier</span>              
+            {% endif %}
+					</a>
+				</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>

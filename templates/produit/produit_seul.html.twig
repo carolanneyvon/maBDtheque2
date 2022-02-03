@@ -1,0 +1,7 @@
+
+<div class="product-item text-center">
+    <a href="{{ path('products', {'id' : produit.id}) }}"><img src="/uploads/{{ produit.image }}" height="360" weight="500" alt="{{ produit. titre}}" ></a>
+    <h5>{{ produit.titre }}</h5>
+        <span class="product-subtitle"> de {{ produit.auteur }}</span><br>
+        <span class="product-prix">{{ produit.prix / 100 }} €</span>
+</div>

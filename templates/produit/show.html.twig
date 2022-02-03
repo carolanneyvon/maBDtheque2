@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{produit.titre}}{% endblock %}
+
+{% block content %}
+    
+    <div class="row">
+    <div class="col-6 text-center">
+    <h1 class="titre-produit">{{produit.titre}}</h1>
+        <img src="/uploads/{{ produit.image }}" height="360" weight="500" alt="{{ produit. titre}}">
+    </div>
+    <div class="col-6">
+                <h6><strong> Titre </strong>  : {{produit.titre}}</h6>
+                <span><strong> Genre </strong>  : {{produit.genre}}</span>
+                    <br>
+                  <span> <strong> Description </strong> : 
+                  <br>
+                  <p> {{produit.description}} </p>
+                  </span>
+                    {# <span> {{produit.prix}} € </span> #}<br>
+                   <span class="product-page-prix">  <strong> Prix : </strong> {{ (produit.prix / 100)|number_format(2, ',', '.') }} €</span>
+                   <div>
+                        <strong> Auteur  </strong> : {{produit.auteur }} <br>
+                         <strong> Editeur  </strong> : {{produit.editeur }} <br>
+                   </div>
+
+             <p class="text-center">
+             <a href="{{ path('add_to_cart', { 'id' : produit.id }) }}" class="btn btn-warning">Ajouter au panier</a> </p>
+             
+    </div>
+                 <p class="text-center">
+             <a href="{{ path('produit') }}" class="btn btn-dark btn-hover-bd">Retour au catalogue</a> </p>
+             
+    </div>
+{% endblock %}

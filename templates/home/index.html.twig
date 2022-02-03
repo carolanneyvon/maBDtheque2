@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block carousel %}{% endblock %}
+
+{% block content %}
+
+
+   <!-- Rubrique nos coup de coeur -->
+   <div class="section-title my-5">
+      <h2 class="titre-custom" >Nos coups de coeur</h2>
+      <p>Découvrez notre sélection</p>
+    </div>
+    <div class="row">
+        {% for produit in produit %}
+            <div class="col-md-3">
+                {% include 'produit/produit_seul.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+
+        <!-- Nos conseils de lecture-->
+
+    <div class="section-title my-5">
+      <h2 class="titre-custom" >Nos conseils lecture </h2>
+      <p>Découvrez nos conseils lecture</p>
+    </div>
+
+    <div class="row">
+      {% for produit in produitConseil %}
+        <div class="col-md-6 col-xs-6">
+          {% include '/produit/produit_conseil.html.twig' %}
+        </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}
+

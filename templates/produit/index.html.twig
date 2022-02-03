@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogues{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-3">
+    <h3>Filtrer</h3>
+    {{ form(form_search) }}
+  </div> 
+
+  <div class="col-md-9">
+    <h3>Notre catalogue</h3>
+
+    <div class="row product-container">
+      {% for produit in produits %}
+        <div class="col-md-4">
+           {% include 'produit/produit_seul.html.twig'%}
+        </div>
+      {% endfor %}  
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+{% if previous >= 0 %}
+<a href="{{ path('produit', { offset: previous }) }}" class="btn btn-sm btn-warning me-2"><<</a>
+{% endif %}
+Il y a {{ produits|length~' produit'~( produits|length > 1 ? 's' : '') }}
+{% if next < produits|length %}
+<a href="{{ path('produit', { offset: next }) }}" class="btn btn-sm btn-warning ms-2">>></a>
+{% endif %}
+</div>
+
+{% endblock %}

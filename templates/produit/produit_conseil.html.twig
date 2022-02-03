@@ -1,0 +1,10 @@
+
+<div class="product-item text-center">
+  <a href="{{ path('products', {'id' : produit.id}) }}"><img src="/uploads/{{ produit.image }}" alt="{{ produit. titre}}" class="img-fluid"></a>
+   <h5>{{ produit.titre }}</h5>
+  <span class="product-subtitle"> de {{ produit.auteur }}</span><br>
+  <span class="product-prix">{{ produit.prix / 100 }} €</span><br>
+  <div itemprop="reviewBody">
+    <span class="product-prix">{{ produit.description }}</span>
+  </div>
+</div>
